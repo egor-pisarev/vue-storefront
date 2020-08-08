@@ -7,17 +7,19 @@ import omit from 'lodash/omit'
 export default function getConfigurationMatchLevel (configuration, variant): number {
   if (!variant || !configuration) return 0
   const configProperties = Object.keys(omit(configuration, ['price']))
-  return configProperties
+  let score = 0
+
+  configProperties
     .map(configProperty => {
       const variantPropertyId = variant[configProperty]
-      if (configuration[configProperty] === null) {
-        return false
+      if (configuration[configProperty] !== null && configuration[configProperty].id === variantPropertyId) {
+        if (configuration[configProperty].priority) {
+          score += configuration[configProperty].priority
+          return
+        }
+        score += 1
       }
-
-      return [].concat(configuration[configProperty])
-        .map(f => typeof f === 'object' ? toString(f.id) : f)
-        .includes(toString(variantPropertyId))
     })
-    .filter(Boolean)
-    .length
+
+  return score
 }
