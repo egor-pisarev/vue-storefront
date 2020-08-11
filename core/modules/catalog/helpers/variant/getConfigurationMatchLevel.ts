@@ -12,7 +12,7 @@ export default function getConfigurationMatchLevel (configuration, variant): num
   configProperties
     .map(configProperty => {
       const variantPropertyId = variant[configProperty]
-      if (configuration[configProperty] !== null && configuration[configProperty].id === variantPropertyId) {
+      if (configuration[configProperty] !== null && `${configuration[configProperty].id}` === `${variantPropertyId}`) {
         if (configuration[configProperty].priority) {
           score += configuration[configProperty].priority
           return
