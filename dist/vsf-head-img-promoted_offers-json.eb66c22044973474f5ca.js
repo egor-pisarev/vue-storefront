@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[24],{702:function(s){s.exports=JSON.parse('{"mainBanners":[{"title":"Клюшки","subtitle":"","image":"/assets/ban1.jpg","link":"/c/klyushki"}],"smallBanners":[{"title":"Коньки","subtitle":"","image":"/assets/ban2.jpg","link":"/c/konki"},{"title":"Защита","subtitle":"","image":"/assets/ban3.jpg","link":"/gear.html"}],"productBanners":[{"title":"Аттрибутика","subtitle":"","image":"/assets/ban3.jpg","link":"/gear.html"}]}')}}]);
+//# sourceMappingURL=vsf-head-img-promoted_offers-json.eb66c22044973474f5ca.js.map

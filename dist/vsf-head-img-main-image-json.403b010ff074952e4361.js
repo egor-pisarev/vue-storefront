@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[23],{701:function(e){e.exports=JSON.parse('{"image":{"title":"Хоккейный интернет магазин в Барнауле","subtitle":"В нашем интернет магазине вы можете купить товары для хоккея. Большой выбор клюшек, коньков, защиты и других товаров для хоккея","image":"/assets/full_width_banner.jpg","link":"/c/shop"}}')}}]);
-//# sourceMappingURL=vsf-head-img-main-image-json.403b010ff074952e4361.js.map
