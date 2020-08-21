@@ -6,6 +6,8 @@ npm-debug.log
 .vscode/
 .idea/
 config/local.json
+config/defaultFilters.json
+config/filterAggregationSize.json
 var
 build/config.json
 core/build/config.json
