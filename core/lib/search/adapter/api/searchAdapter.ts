@@ -69,7 +69,6 @@ export class SearchAdapter {
     if (!Request.index || !Request.type) {
       throw new Error('Query.index and Query.type are required arguments for executing ElasticSearch query')
     }
-    console.log('!DEBUG!  ', JSON.stringify(ElasticsearchQueryBody))
     if (config.elasticsearch.queryMethod === 'GET') {
       httpQuery.request = JSON.stringify(ElasticsearchQueryBody)
     }
