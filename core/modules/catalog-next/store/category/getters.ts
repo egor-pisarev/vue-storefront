@@ -50,6 +50,9 @@ const getters: GetterTree<CategoryState, RootState> = {
   getAvailableFiltersFrom: (state, getters, rootState) => (aggregations) => {
     const filters = {}
     if (aggregations) { // populate filter aggregates
+      if(aggregations.configurable_children){
+        aggregations = aggregations.configurable_children
+      }      
       for (let attrToFilter of products.defaultFilters) { // fill out the filter options
         let filterOptions: FilterVariant[] = []
 

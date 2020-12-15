@@ -71,7 +71,7 @@ const actions: ActionTree<AttributeState, RootState> = {
     }
 
     const query = createAttributesListQuery({
-      filterValues,
+      filterValues: null,
       filterField,
       onlyDefinedByUser: only_user_defined,
       onlyVisible: only_visible
@@ -81,14 +81,12 @@ const actions: ActionTree<AttributeState, RootState> = {
 
     dispatch('updateBlacklist', { filterValues, filterField, attributes })
     await dispatch('updateAttributes', { attributes })
-
     return resp
   },
   async loadProductAttributes (context, { products, merge = false }) {
     const attributeMetadata = products
       .filter(product => product.attributes_metadata)
       .map(product => product.attributes_metadata)
-
     const attributes = transformMetadataToAttributes(attributeMetadata)
 
     if (merge) {

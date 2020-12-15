@@ -212,7 +212,7 @@ const actions: ActionTree<CategoryState, RootState> = {
     let t0 = new Date().getTime()
 
     const precachedQuery = searchProductQuery
-    let productPromise = rootStore.dispatch('product/list', {
+    let productPromise = rootStore.dispatch('product/findProducts', {
       query: precachedQuery,
       start: current,
       size: perPage,

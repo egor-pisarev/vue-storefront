@@ -120,7 +120,7 @@ export function baseFilterProductsQuery (parentCategory, filters = []) { // TODO
     .applyFilter({ key: 'status', value: { 'in': [0, 1] } }) /* 2 = disabled, 4 = out of stock */
 
   if (config.products.listOutOfStockProducts === false) {
-    searchProductQuery = searchProductQuery.applyFilter({ key: 'stock.is_in_stock', value: { 'eq': true } })
+    searchProductQuery = searchProductQuery.applyFilter({ key: 'configurable_children.is_in_stock', value: { 'eq': 1 } })
   }
   // Add available catalog filters
   for (let attrToFilter of filters) {
@@ -153,6 +153,8 @@ export function baseFilterProductsQuery (parentCategory, filters = []) { // TODO
 
 export function buildFilterProductsQuery (currentCategory, chosenFilters = {}, defaultFilters = null) {
   let filterQr = baseFilterProductsQuery(currentCategory, defaultFilters == null ? config.products.defaultFilters : defaultFilters)
+  
+  filterQr = filterQr.applyFilter({ key: 'configurable_children.is_in_stock', value: {'eq': 1}, scope: 'catalog' })
 
   // add choosedn filters
   for (let code of Object.keys(chosenFilters)) {
@@ -161,9 +163,9 @@ export function buildFilterProductsQuery (currentCategory, chosenFilters = {}, d
 
     if (Array.isArray(filter) && attributeCode !== 'price') {
       const values = filter.map(filter => filter.id)
-      filterQr = filterQr.applyFilter({ key: attributeCode, value: { 'in': values }, scope: 'catalog' })
+      filterQr = filterQr.applyFilter({ key: `${attributeCode}`, value: { 'in': values }, scope: 'catalog' })
     } else if (attributeCode !== 'price') {
-      filterQr = filterQr.applyFilter({ key: attributeCode, value: { 'eq': filter.id }, scope: 'catalog' })
+      filterQr = filterQr.applyFilter({ key: `${attributeCode}`, value: { 'eq': filter.id }, scope: 'catalog' })
     } else { // multi should be possible filter here?
       const rangeqr = {}
       const filterValues = Array.isArray(filter) ? filter : [filter]
@@ -171,10 +173,9 @@ export function buildFilterProductsQuery (currentCategory, chosenFilters = {}, d
         if (singleFilter.from) rangeqr['gte'] = singleFilter.from
         if (singleFilter.to) rangeqr['lte'] = singleFilter.to
       })
-      filterQr = filterQr.applyFilter({ key: attributeCode, value: rangeqr, scope: 'catalog' })
+      filterQr = filterQr.applyFilter({ key: `${attributeCode}`, value: rangeqr, scope: 'catalog' })
     }
   }
-
   return filterQr
 }
 

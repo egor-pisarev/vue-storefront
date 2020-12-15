@@ -11,7 +11,7 @@ export function optionLabel (state, { attributeKey, searchBy = 'code', optionId 
   if (!state.labels) {
     state.labels = {}
   }
-
+  attributeKey = attributeKey.split('.')[1]?attributeKey.split('.')[1]:attributeKey
   // check cached attribute
   const attrCache = get(state, `labels.${attributeKey}.${optionId}`, null)
   if (attrCache) {

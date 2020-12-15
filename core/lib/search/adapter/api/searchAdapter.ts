@@ -69,6 +69,18 @@ export class SearchAdapter {
     if (!Request.index || !Request.type) {
       throw new Error('Query.index and Query.type are required arguments for executing ElasticSearch query')
     }
+
+    if(ElasticsearchQueryBody['aggs']) {
+      ElasticsearchQueryBody['aggs'] = {
+        'configurable_children': {
+          'nested': {
+            'path': 'configurable_children'
+          },
+          'aggs': ElasticsearchQueryBody['aggs']
+        }
+      }
+    }
+
     if (config.elasticsearch.queryMethod === 'GET') {
       httpQuery.request = JSON.stringify(ElasticsearchQueryBody)
     }
