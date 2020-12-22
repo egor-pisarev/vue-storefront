@@ -10,7 +10,7 @@ export function prepareQuickSearchQuery (queryText) {
     .applyFilter({ key: 'status', value: { 'in': [0, 1] } })/* 2 = disabled, 3 = out of stock */
 
   if (config.products.listOutOfStockProducts === false) {
-    searchQuery = searchQuery.applyFilter({ key: 'stock.is_in_stock', value: { 'eq': true } })
+    searchQuery = searchQuery.applyFilter({ key: 'configurable_children.is_in_stock', value: { 'eq': true } })
   }
 
   return searchQuery
