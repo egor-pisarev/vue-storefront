@@ -90,9 +90,9 @@ module.exports = {
       "destPath": "static"
     },
     "seo": {
-      "useUrlDispatcher": true,
+      "useUrlDispatcher": false,
       "disableUrlRoutesPersistentCache": true,
-      "defaultTitle": "Vue Storefront"
+      "defaultTitle": "Клюшки22.рф"
     },
     "console": {
       "showErrorOnProduction": false,
@@ -108,7 +108,7 @@ module.exports = {
       "port": 8080
     },
     "api": {
-      "url": "http://localhost:8080",
+      "url": "https://xn--22-vlchaf5g1b.xn--p1ai",
       "saveBandwidthOverCache": true
     },
     "elasticsearch": {
