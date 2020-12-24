@@ -182,7 +182,7 @@ module.exports = {
       "commonCache": false
     },
     "entities": {
-      "optimize": true,
+      "optimize": false,
       "twoStageCaching": true,
       "optimizeShoppingCart": true,
       "optimizeShoppingCartOmitFields": [
@@ -552,7 +552,7 @@ module.exports = {
       "configurableChildrenStockPrefetchDynamic": true,
       "configurableChildrenStockPrefetchStaticPrefetchCount": 8,
       "filterUnavailableVariants": false,
-      "listOutOfStockProducts": true,
+      "listOutOfStockProducts": false,
       "preventConfigurableChildrenDirectAccess": true,
       "alwaysSyncPlatformPricesOver": false,
       "alwaysSyncPricesClientSide": false,
