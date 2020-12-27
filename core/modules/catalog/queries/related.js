@@ -1,7 +1,7 @@
 import { SearchQuery } from 'storefront-query-builder'
 import config from 'config'
 
-export function prepareRelatedQuery (key, sku) {
+export function prepareRelatedQuery(key, sku) {
   let relatedProductsQuery = new SearchQuery()
 
   relatedProductsQuery = relatedProductsQuery.applyFilter({ key: key, value: { 'in': sku } })
@@ -10,9 +10,11 @@ export function prepareRelatedQuery (key, sku) {
     .applyFilter({ key: 'visibility', value: { 'in': [2, 3, 4] } })
     .applyFilter({ key: 'status', value: { 'in': [1] } })
 
-  if (config.products.listOutOfStockProducts === false) {
-    relatedProductsQuery = relatedProductsQuery.applyFilter({ key: 'stock.is_in_stock', value: { 'eq': true } })
-  }
+  // if (config.products.listOutOfStockProducts === false) {
+  //   relatedProductsQuery = relatedProductsQuery.applyFilter({ key: 'stock.is_in_stock', value: { 'eq': true } })
+  // }
+
+  searchQuery = searchQuery.applyFilter({ key: 'configurable_children.is_in_stock', value: { 'eq': 1 }, scope: 'catalog' })
 
   return relatedProductsQuery
 }
