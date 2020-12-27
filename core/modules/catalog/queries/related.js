@@ -14,7 +14,7 @@ export function prepareRelatedQuery(key, sku) {
   //   relatedProductsQuery = relatedProductsQuery.applyFilter({ key: 'stock.is_in_stock', value: { 'eq': true } })
   // }
 
-  searchQuery = searchQuery.applyFilter({ key: 'configurable_children.is_in_stock', value: { 'eq': 1 }, scope: 'catalog' })
+  relatedProductsQuery = relatedProductsQuery.applyFilter({ key: 'configurable_children.is_in_stock', value: { 'eq': 1 }, scope: 'catalog' })
 
   return relatedProductsQuery
 }
