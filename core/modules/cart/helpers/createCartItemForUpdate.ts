@@ -2,7 +2,11 @@ import config from 'config'
 import CartItem from '@vue-storefront/core/modules/cart/types/CartItem';
 
 const createCartItemForUpdate = (clientItem: CartItem, serverItem: any, updateIds: boolean = false, mergeQty: boolean = false): CartItem => {
-  const sku = clientItem.parentSku && config.cart.setConfigurableProductOptions ? clientItem.parentSku : clientItem.sku
+  
+  //const sku = clientItem.parentSku && config.cart.setConfigurableProductOptions ? clientItem.parentSku : clientItem.sku
+
+  const sku = clientItem.sku
+
   const cartItem = {
     sku,
     ...((serverItem && serverItem.item_id) ? { item_id: serverItem.item_id } : {}),
